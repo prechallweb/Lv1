@@ -1,4 +1,54 @@
-/* 전체 레이아웃: 좌측 고정, 우측 가변 */
+/* =========================
+   공통 토큰 (드롭다운 레이아웃)
+   ========================= */
+:root{
+  --pv-cols: 3;           /* 열 개수 */
+  --pv-col-w: 160px;      /* 칸 너비 */
+  --pv-col-gap: 24px;     /* 열 간격 */
+  --pv-row-gap: 8px;      /* 행 간격 */
+  --pv-row-h: 28px;       /* 한 줄 높이 */
+  --pv-rows: 2;           /* 고정 표시 줄 수 */
+  --pv-width: calc(var(--pv-cols) * var(--pv-col-w) + (var(--pv-cols) - 1) * var(--pv-col-gap));
+  --pv-height: calc(var(--pv-rows) * var(--pv-row-h) + (var(--pv-rows) - 1) * var(--pv-row-gap));
+}
+
+/* =========================
+   컨테이너 / 헤더 / 푸터
+   ========================= */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+.site-header {
+  display: flex;
+  align-items: center;       /* 세로 중앙 */
+  justify-content: space-between;
+  height: 64px;
+  padding: 0 0;              /* 좌우 패딩은 .container가 담당 */
+  background: #fff;
+  box-sizing: border-box;
+}
+
+.logo { margin: 0; }
+.logo img {
+  height: 32px;
+  width: auto;
+}
+
+.site-footer {
+  padding: 16px;
+  border-top: 1px solid #ddd;
+  text-align: center;
+  color: #666;
+  background: #fff;
+}
+
+/* =========================
+   메인 그리드 레이아웃
+   ========================= */
 .layout {
   display: grid;
   grid-template-columns: 280px 1fr; /* 좌측 280px, 우측 가변 */
@@ -6,51 +56,58 @@
   margin-top: 20px;
 }
 
-/* 좌측 사이드바 */
 .sidebar {
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
 
-/* 프로필 카드 */
-.profileCard {
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* =========================
+   카드/박스 공통
+   ========================= */
+.profileCard,
+.sideMenu,
+.banner,
+.contentBox {
   border: 1px solid #ddd;
   border-radius: 12px;
-  padding: 16px;
   background: #fff;
   box-shadow: 0 2px 6px rgba(0,0,0,0.05);
 }
 
+.profileCard { padding: 16px; }
+.sideMenu    { padding: 16px; }
+.banner      { padding: 20px; text-align: center; background: #f5f5f5; }
+.contentBox  { padding: 20px; }
+
 .profileTop {
   display: flex;
   align-items: center;
-  justify-content: space-between; 
+  justify-content: space-between;
   gap: 10px;
 }
 
-.nickname {
-  font-size: 14px;
-}
+.nickname { font-size: 14px; }
 
 .loginText {
   font-size: 13px;
   color: #888;
   cursor: pointer;
 }
-
-.loginText:hover {
-  color: #111; /* 살짝 진하게 */
-}
-
+.loginText:hover { color: #111; }
 
 .levelRow {
   display: flex;
-  justify-content: space-between; /* ✅ 좌우 끝으로 붙임 */
+  justify-content: space-between;
   align-items: center;
   margin: 8px 0;
 }
-
 .levelTag {
   background: #e0f7e9;
   color: #28a745;
@@ -58,77 +115,27 @@
   padding: 2px 8px;
   border-radius: 6px;
 }
-
 .levelPercent {
   font-size: 12px;
   color: #666;
 }
 
-/* 사이드 메뉴 */
-.sideMenu {
-  border: 1px solid #ddd;
-  border-radius: 12px;
-  background: #fff;
-  padding: 16px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-}
-.sideMenu ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
+/* 사이드 메뉴 리스트 */
+.sideMenu ul { list-style: none; margin: 0; padding: 0; }
 .sideMenu li {
   padding: 10px 0;
   border-bottom: 1px solid #eee;
 }
-.sideMenu li:last-child {
-  border-bottom: none;
-}
+.sideMenu li:last-child { border-bottom: none; }
 
-/* 오른쪽 메인 */
-.main {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.avatar {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  object-fit: cover;
-}
-
-
-
-/* 배너 */
-.banner {
-  border: 1px solid #ddd;
-  border-radius: 12px;
-  background: #f5f5f5;
-  padding: 20px;
-  text-align: center;
-}
-
-/* 메인 콘텐츠 */
-.contentBox {
-  border: 1px solid #ddd;
-  border-radius: 12px;
-  background: #fff;
-  padding: 20px;
-}
-
-/* 텍스트 탭 */
+/* 탭류 */
 .profileTabs {
   display: flex;
   align-items: center;
-  /* 한 줄 유지 */
-  white-space: nowrap;
-   gap: 20px;                 /* 항목 간격 */
+  white-space: nowrap;   /* 한 줄 유지 */
+  gap: 20px;
   margin-top: 10px;
 }
-
-/* 각 항목 */
 .tab {
   color: #666;
   font-size: 13px;
@@ -136,30 +143,21 @@
   line-height: 1;
   text-align: center;
 }
-
-
-/* 호버 시 살짝 진하게(텍스트 느낌 유지) */
 .tab:hover { color: #111; }
 
 .contentHeader {
   display: flex;
-  gap: 24px;          /* 두 제목 사이 간격 */
+  gap: 24px;
   align-items: center;
 }
 
-
-/* 2칸 레이아웃 */
 .twoCol {
   display: grid;
-  grid-template-columns: 1fr 1fr;  /* 두 칸 */
-  gap: 24px;                       /* 칸 사이 간격 */
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
 }
-/* 각 칸 */
-.col {
-  text-align: left;                /* 내부 왼쪽 정렬 */
-}
+.col { text-align: left; }
 
-/* 화원 하위 탭 */
 .subTabs {
   margin-top: 8px;
   display: flex;
@@ -168,16 +166,31 @@
   font-size: 13px;
   color: #666;
 }
+.subTabs span:hover { color: #000; cursor: pointer; }
 
-.subTabs span:hover {
-  color: #000;
-  cursor: pointer;
+.avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
 }
 
-.menubar ul {
+/* =========================
+   상단 메뉴바 & 드롭다운
+   ========================= */
+.menubar {
+  width: 100%;
+  background-color: #ffffff;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.menubar > ul {              /* 상단 1뎁스만 가로 정렬 */
   display: flex;
   list-style: none;
-  gap: 20px;
+  gap: 24px;
   margin: 0;
   padding: 0;
 }
@@ -185,30 +198,106 @@
 .menubar a {
   font-size: 16px;
   text-decoration: none;
-  color: black;
+  color: #111;
 }
 
 .navItem {
   position: relative; /* 미리보기 위치 기준 */
 }
 
-.previewBox {
+/* ▽ 드롭다운 박스: 완전 고정 폭/높이 + 내부 스크롤 안정화 */
+.previewBox{
   display: none;
   position: absolute;
-  top: 120%;   /* 메뉴 텍스트 바로 아래 */
+  top: 100%;
   left: 0;
+
+  width: var(--pv-width);
+  min-width: var(--pv-width);
+  max-width: var(--pv-width);
+
+  min-height: var(--pv-height);
+  max-height: var(--pv-height);
+
+  padding: 12px 16px;
+  box-sizing: border-box;
+
   background: #fff;
-  border: 1px solid #ddd;
-  padding: 8px 12px;
-  border-radius: 6px;
-  font-size: 13px;
-  color: #333;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-  white-space: nowrap;
-  z-index: 100;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0,0,0,.08);
+  z-index: 50;
+
+  /* 내용 많을 때 내부만 스크롤하고 폭은 그대로 */
+  overflow-y: auto;
+  scrollbar-gutter: stable both-edges;
+
+  /* 텍스트 공통 */
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 14px;
+  color: #444;
 }
 
-/* hover 시 보이도록 */
-.navItem:hover .previewBox {
-  display: block;
+/* 호버 시 보이기 */
+.navItem:hover .previewBox { display: block; }
+
+/* ▽ 드롭다운 내부 3열 고정 그리드 */
+.previewBox ul{
+  display: grid;
+  grid-template-columns: repeat(var(--pv-cols), var(--pv-col-w));
+  grid-auto-rows: var(--pv-row-h);
+  column-gap: var(--pv-col-gap);
+  row-gap: var(--pv-row-gap);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* 한글 쪼개짐 방지 + 한 줄 유지 */
+.previewBox, .previewBox *{ word-break: keep-all; }
+.previewBox li a{
+  display: inline-block;
+  white-space: nowrap;
+  line-height: var(--pv-row-h);
+  text-decoration: none;
+  color: #444;
+  font-weight: 500;
+}
+.previewBox li a:hover{
+  color: #008000;
+  text-decoration: underline;
+}
+
+/* =========================
+   반응형 (태블릿 이하)
+   ========================= */
+@media (max-width: 1024px){
+  .layout {
+    grid-template-columns: 1fr;  /* 사이드바 아래로 */
+  }
+  .sidebar { order: 2; }
+  .main { order: 1; }
+
+  /* 드롭다운은 폭 줄여 2열 */
+  :root{
+    --pv-cols: 2;
+    --pv-col-w: 150px;
+    --pv-rows: 3;  /* 세로 줄 수 늘려 시야 확보 */
+    --pv-width: calc(var(--pv-cols) * var(--pv-col-w) + (var(--pv-cols) - 1) * var(--pv-col-gap));
+    --pv-height: calc(var(--pv-rows) * var(--pv-row-h) + (var(--pv-rows) - 1) * var(--pv-row-gap));
+  }
+}
+
+/* 모바일 */
+@media (max-width: 640px){
+  .menubar > ul { gap: 16px; }
+  .menubar a { font-size: 15px; }
+
+  :root{
+    --pv-cols: 1;
+    --pv-col-w: 220px;
+    --pv-rows: 4;
+    --pv-width: calc(var(--pv-cols) * var(--pv-col-w) + (var(--pv-cols) - 1) * var(--pv-col-gap));
+    --pv-height: calc(var(--pv-rows) * var(--pv-row-h) + (var(--pv-rows) - 1) * var(--pv-row-gap));
+  }
 }
