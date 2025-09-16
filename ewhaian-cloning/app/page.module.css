@@ -95,7 +95,7 @@
 .avatar {
   width: 48px;
   height: 48px;
-  border-radius: 50%;   /* ✅ 완전 동그랗게 */
+  border-radius: 50%;
   object-fit: cover;
 }
 
@@ -132,28 +132,18 @@
 .tab {
   color: #666;
   font-size: 13px;
-  text-decoration: none; /* a 태그로 바꿔도 밑줄 안 뜨게 */
+  text-decoration: none;
   line-height: 1;
   text-align: center;
 }
 
-/* 항목 사이 얇은 구분선 */
-.tab + .tab::before {
-  content: "";
-  display: inline-block;
-  width: 1px;
-  height: 12px;
-  background: #e4e4e4;
-  margin: 0 14px;
-  vertical-align: middle;
-}
 
 /* 호버 시 살짝 진하게(텍스트 느낌 유지) */
 .tab:hover { color: #111; }
 
 .contentHeader {
   display: flex;
-  gap: 24px;          /* ✅ 두 제목 사이 간격 */
+  gap: 24px;          /* 두 제목 사이 간격 */
   align-items: center;
 }
 
@@ -161,12 +151,12 @@
 /* 2칸 레이아웃 */
 .twoCol {
   display: grid;
-  grid-template-columns: 1fr 1fr;  /* ✅ 두 칸 */
+  grid-template-columns: 1fr 1fr;  /* 두 칸 */
   gap: 24px;                       /* 칸 사이 간격 */
 }
 /* 각 칸 */
 .col {
-  text-align: left;                /* ✅ 내부 왼쪽 정렬 */
+  text-align: left;                /* 내부 왼쪽 정렬 */
 }
 
 /* 화원 하위 탭 */
