@@ -1,0 +1,80 @@
+/* 헤더 한 줄 정렬 */
+.site-header {
+  display: flex;
+  align-items: center;        /* 세로 중앙 */
+  justify-content: space-between;
+  height: 48px;               /* ↓ 로고 크기에 맞춰 조정 */
+  padding: 0 20px;
+  background: #fff;
+  box-sizing: border-box;
+}
+
+.logo { margin: 0; }
+.logo img {
+  height: 28px;      
+  width: auto;
+}
+
+.menubar ul {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+  margin: 0;
+  padding: 0;
+}
+
+.menubar a {
+  font-size: 16px;
+  text-decoration: none;
+  color: black;
+}
+
+.navItem {
+  position: relative; /* 미리보기 위치 기준 */
+}
+
+.previewBox {
+  display: none;
+  position: absolute;
+  top: 120%;   /* 메뉴 텍스트 바로 아래 */
+  left: 0;
+  background: #fff;
+  border: 1px solid #ddd;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 13px;
+  color: #333;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  white-space: nowrap;
+  z-index: 100;
+}
+
+/* hover 시 보이도록 */
+.navItem:hover .previewBox {
+  display: block;
+}
+
+.site-footer {
+  padding: 16px;
+  border-top: 1px solid #ddd;
+  text-align: center;
+}
+
+.menubar {
+  width: 100%;
+  background-color: #ffffff;
+  padding: 10px 20px;
+  height: 65px;                /* 로고 높이랑 동일하게 맞춤 */
+  display: flex;
+  align-items: center;         /* 수직 중앙 정렬 */
+  padding: 0 20px;             /* 좌우 여백만 */
+  box-sizing: border-box;
+}
+
+/* 페이지 전체 컨테이너 */
+.container {
+  max-width: 1200px;     /* ✅ 원하는 폭 (예: 1100~1280px) */
+  margin: 0 auto;        /* ✅ 좌우 가운데 정렬 */
+  padding: 0 20px;       /* ✅ 화면 끝이랑 살짝 띄우기 */
+  box-sizing: border-box;
+}
