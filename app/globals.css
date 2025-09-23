@@ -1,0 +1,533 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* root 변수: 원본에서 사용하던 주요 변수 이름을 유지 */
+:root{
+  --primary-normal: #00a67f;
+  --primary-interaction: #007c62;
+  --text-strong: #242628;
+  --text-normal: #56585a;
+  --text-assistive: #a1a3a5;
+  --fill-strong: #f9fafb;
+  --fill-normal: #ffffff;
+  --line-strong: #d3d5d7;
+  --line-normal: #eceef0;
+  --pink: #fff4f8;
+  --icon-normal: invert(34%) sepia(7%) saturate(211%) hue-rotate(169deg) brightness(92%) contrast(83%);
+  --font-sans: "Pretendard Variable", "Noto Sans KR", "Apple SD Gothic Neo", Arial, sans-serif;
+}
+
+/* 기본 리셋 - 안전하게 유지 */
+html,body {
+  margin:0;
+  padding:0;
+  height:100%;
+  min-height:100%;
+  font-family: var(--font-sans);
+  color: var(--text-normal);
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.5;
+  scroll-behavior: smooth;
+  background: var(--fill-normal);
+}
+
+/* 보조 클래스 */
+.sr-only{
+  position: absolute !important;
+  width:1px; height:1px;
+  padding:0; margin:-1px;
+  overflow:hidden; clip:rect(0,0,0,0);
+  white-space:nowrap; border:0;
+}
+
+/* ---------------------------------------------------------
+   페이지별 공통 / 원본 스타일의 핵심 추출 (login/find/signup 등)
+   --------------------------------------------------------- */
+
+/* 공통 inner 컨테이너 (원본은 1060px) */
+.inner {
+  width: 1060px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* 헤더 */
+header,
+.styles__Container-sc-ea066d6e-0,
+.styles__Container-sc-ea066d6e-1 {
+  background: var(--fill-normal);
+  border-bottom: 1px solid var(--line-normal);
+}
+header .inner,
+.styles__Container-sc-ea066d6e-1 .inner {
+  padding: 12px 16px;
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+.logo img {
+  display:block;
+  height:28px;
+}
+
+/* 메뉴 */
+.menuList {
+  display:flex;
+  gap:20px;
+  list-style:none;
+  padding:0;
+  margin:0;
+}
+.menuItem button,
+.depth01 {
+  background:none;
+  border:0;
+  font-size:15px;
+  font-weight:500;
+  color:var(--text-normal);
+}
+
+/* 검색 */
+.search input,
+.styles__Container-sc-84ec973c-0 input {
+  border:1px solid var(--line-normal);
+  border-radius:6px;
+  padding:7px 10px;
+  font-size:14px;
+}
+
+/* 모바일 헤더 요소(아이콘 버튼 등) */
+.styles__MobileHeader-sc-ea066d6e-1 .btnWrap {
+  display:flex;
+  gap:8px;
+  align-items:center;
+}
+
+/* main / form wrapper */
+main,
+.styles__Container-sc-7069b3c5-0,
+.styles__Container-sc-1e766077-0 {
+  padding: 20px 0;
+}
+
+/* formInner */
+.formInner {
+  width: 448px;
+  margin: 24px auto;
+  padding: 0 16px;
+}
+.headline {
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 18px;
+}
+
+/* 입력공간 */
+.inputWrap {
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+.input {
+  flex:1;
+}
+.input input,
+input[type="text"],
+input[type="password"],
+input[type="email"] {
+  width:100%;
+  padding:10px 12px;
+  border:1px solid var(--line-normal);
+  border-radius:6px;
+  font-size:14px;
+  color:var(--text-strong);
+  background:var(--fill-normal);
+}
+
+/* 가이드 텍스트 */
+.guideText,
+.caption,
+.essentialText {
+  display:block;
+  margin-top:6px;
+  color:var(--text-assistive);
+  font-size:13px;
+}
+
+/* password visibility button */
+.visibilityBtn {
+  background: none;
+  border: 0;
+  padding: 6px;
+}
+
+/* 체크박스 (간단 구현) */
+.check {
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+.checkBox {
+  display:inline-block;
+  width:16px; height:16px;
+  border:1px solid var(--line-normal);
+  border-radius:3px;
+  vertical-align:middle;
+  background: transparent;
+}
+.styles__Input-sc-39afd532-0 {
+  display:inline-block;
+  width:16px; height:16px; margin:0; padding:0;
+  vertical-align:middle;
+}
+
+/* 체크라벨 텍스트 */
+.checkText {
+  vertical-align:middle;
+  font-size:14px;
+}
+
+/* 계정정보입력 미니버튼 스타일 (원본 클래스명 일부 보존) */
+.styles__Button-sc-163293cd-0,
+button.bNUQQg {
+  display:inline-block;
+  padding:10px 20px;
+  border-radius:6px;
+  background:var(--primary-normal);
+  color:#fff;
+  font-weight:500;
+  font-size:14px;
+  text-align:center;
+  border: none;
+}
+button.bNUQQg.secondary {
+  background: #f5f5f5;
+  color: var(--text-normal);
+  border: 1px solid var(--line-normal);
+}
+
+/* 탭 (아이디/비밀번호 찾기) */
+.tabList {
+  display:flex;
+  gap:20px;
+  justify-content:center;
+  list-style:none;
+  padding:0;
+  margin: 18px 0;
+  border-bottom: 1px solid var(--line-normal);
+}
+.tabList li a {
+  padding:10px 6px;
+  color: var(--text-assistive);
+  font-size: 15px;
+}
+.tabList li a.active {
+  color: var(--primary-normal);
+  font-weight:600;
+  border-bottom: 2px solid var(--primary-normal);
+}
+
+/* 버튼 그룹 중앙 정렬 */
+/* .btnWrap,
+.loginBtn,
+.nextBtn {
+  margin-top:20px;
+  display:flex;
+  justify-content:center;
+  gap:12px;
+} */
+ /* 로그인 버튼만 full-width */
+.loginBtn button {
+  width: 100%;
+  background-color: #00a67f;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 12px;
+  border-radius: 6px;
+}
+
+/* 다른 버튼 그룹은 자동 크기 */
+.btnWrap button,
+.nextBtn button {
+  margin-top:10px;
+  width: auto;
+  min-width: 120px; 
+  padding: 10px 16px;
+}
+
+
+/* step (회원가입) */
+.stepList {
+  display:flex;
+  gap:12px;
+  justify-content:center;
+  list-style:none;
+  padding:0;
+  margin-bottom:18px;
+}
+.stepList li {
+  display:flex;
+  align-items:center;
+  gap:8px;
+  color:var(--text-assistive);
+  font-size:14px;
+}
+.stepList li.active {
+  color: var(--primary-normal);
+  font-weight:600;
+}
+.stepCheck {
+  width:12px; height:12px; border-radius:50%;
+  background: var(--line-normal);
+}
+.stepList li.active .stepCheck {
+  background: var(--primary-normal);
+}
+
+/* footer (간단) */
+footer,
+.styles__Container-sc-1f3a1427-0 {
+  margin-top: 36px;
+  background: var(--fill-normal);
+  border-top: 1px solid var(--line-normal);
+  padding: 20px 0;
+}
+footer .inner {
+  display:flex;
+  justify-content:space-between;
+  gap:20px;
+  align-items:flex-start;
+  width:100%;
+  max-width:1100px;
+  margin:0 auto;
+}
+
+/* 모바일/반응형(간단) */
+@media (max-width: 767px) {
+  .inner { width: calc(100vw - 32px); }
+  .formInner { width: calc(100vw - 32px); margin: 16px auto; }
+  .menuList { display:none; }
+  .mbOnly { display:block; }
+}
+
+/* === copy-guard (F12에서 뽑아온 인라인 스타일 대체) === */
+[data-copy-guard="on"] :not(input):not(textarea):not([contenteditable="true"]):not(.commentWrap):not(.commentContainer) {
+  -webkit-user-select: none !important;
+  -moz-user-select: none !important;
+  -ms-user-select: none !important;
+  user-select: none !important;
+  -webkit-touch-callout: none !important;
+}
+[data-copy-guard="on"] img,
+[data-copy-guard="on"] a img {
+  -webkit-user-drag: none !important;
+  user-drag: none !important;
+}
+[data-copy-guard="on"] a,
+[data-copy-guard="on"] button,
+[data-copy-guard="on"] [role="button"],
+[data-copy-guard="on"] input[type="button"],
+[data-copy-guard="on"] input[type="submit"],
+[data-copy-guard="on"] label[for] {
+  cursor: pointer !important;
+}
+/* CKEditor selection 복원 */
+[data-copy-guard="on"] .ck-editor__editable ::selection,
+[data-copy-guard="on"] .ck-content ::selection {
+  background: Highlight !important;
+  color: HighlightText !important;
+}
+/* globals.css */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #fff;
+  color: #242628;
+  line-height: 1.5;
+}
+
+/* === 공통 form === */
+form {
+  width: 100%;
+  max-width: 420px;
+  margin: 40px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+form fieldset {
+  border: none;
+}
+
+form legend {
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* === input === */
+.inputWrap,
+.input {
+  width: 100%;
+}
+
+.input input {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #eceef0;
+  border-radius: 6px;
+  font-size: 14px;
+  transition: border-color 0.2s ease;
+}
+
+.input input:focus {
+  border-color: #00a67f;
+  outline: none;
+}
+
+/* === label === */
+label {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 6px;
+  color: #242628;
+}
+
+/* === 체크박스 영역 === */
+.checkList {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0 0;
+}
+
+.checkItem {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.checkItem input[type="checkbox"] {
+  accent-color: #00a67f;
+}
+
+/* === 버튼 === */
+button {
+  cursor: pointer;
+  border: none;
+}
+
+.loginBtn button,
+.nextBtn button,
+.btnWrap button {
+  width: 100%;
+  background-color: #00a67f;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 12px;
+  border-radius: 6px;
+  transition: background-color 0.2s ease;
+}
+
+.loginBtn button:hover,
+.nextBtn button:hover,
+.btnWrap button:hover {
+  background-color: #007c62;
+}
+
+button.secondary {
+  background-color: #eceef0;
+  color: #242628;
+}
+
+/* === 하단 링크 === */
+.linkList {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 16px;
+  list-style: none; 
+  padding: 0;
+}
+
+.linkList a {
+  font-size: 13px;
+  color: #56585a;
+  text-decoration: none;
+}
+
+.linkList a:hover {
+  text-decoration: underline;
+}
+
+/* === find pages === */
+.tabList {
+  display: flex;
+  justify-content: center;
+  border-bottom: 1px solid #eceef0;
+  margin-bottom: 20px;
+}
+
+.tabList li {
+  margin: 0 10px;
+}
+
+.tabList a {
+  font-size: 15px;
+  padding: 10px 14px;
+  color: #56585a;
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+}
+
+.tabList a.active {
+  color: #00a67f;
+  border-bottom: 2px solid #00a67f;
+}
+
+/* === signup step === */
+.stepList {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0 30px;
+}
+
+.stepList li {
+  flex: 1;
+  text-align: center;
+  font-size: 13px;
+  color: #a1a3a5;
+  position: relative;
+}
+
+.stepList li.active {
+  color: #00a67f;
+  font-weight: 600;
+}
+
+.stepList li .stepCheck {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: currentColor;
+  display: inline-block;
+  margin-right: 6px;
+}
