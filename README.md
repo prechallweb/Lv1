@@ -30,3 +30,5 @@ bash
 cd frontend
 npm install
 npm run dev
+ 
+ 히히힝
