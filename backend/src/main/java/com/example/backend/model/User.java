@@ -22,3 +22,4 @@ public class User {
     public int getLevel() { return level; }
     public int getPercent() { return percent; }
 }
+// 하이하이
