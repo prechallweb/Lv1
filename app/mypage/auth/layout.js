@@ -1,12 +1,12 @@
 "use client";
 import { usePathname } from "next/navigation"; //사이드바 선택시 색깔표시 위해 
-import "../globals.css";
+import "../../globals.css";
 
 export default function MypageLayout({ children }) {
   const pathname = usePathname();
 
   const menuItems = [
-    { href: "/mypage", label: "내 정보" },
+    { href: "/mypage/myinfo", label: "내 정보" },
     { href: "/mypage/auth", label: "인증" },
   ];
 
