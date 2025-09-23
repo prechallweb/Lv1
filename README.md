@@ -6,3 +6,6 @@ npm install
 npm run dev 또는 npm start로 실행
 
 3. node.modules 폴더는 너무 크기가 커서 깃에 안 올라갑니다. 이 폴더 제외 나머지만 올려주셔도 됩니다.
+
+
+하이하이
