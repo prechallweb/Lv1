@@ -1,13 +1,13 @@
-package menu.notice.errorReport;
+package menu.notice.noticeReport;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ErrorReportApplication {
+public class NoticeReportApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ErrorReportApplication.class, args);
+		SpringApplication.run(NoticeReportApplication.class, args);
 	}
 
 }

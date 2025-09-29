@@ -35,6 +35,8 @@ CREATE TABLE IF NOT EXISTS posts (
   title TEXT NOT NULL,
   author_id UUID NOT NULL REFERENCES users(id) ON DELETE CASCADE,
   content TEXT NOT NULL,
+  file_name TEXT,
+  file_data TEXT,
   created_at TIMESTAMPTZ NOT NULL DEFAULT now(),
   updated_at TIMESTAMPTZ NOT NULL DEFAULT now()
 );

@@ -1,17 +1,25 @@
 'use client';
 
 import { useState } from 'react';
-import Header from '../components/Header';
+import Header from '../../components/Header';
+import Link from "next/link";
 
 export default function Page() {
   const [errorContent, setErrorContent] = useState('');
-  const [files, setFiles] = useState<FileList | null>(null);
+  const [file, setFile] = useState<File | null>(null);
+  const [selectedCategory, setSelectedCategory] = useState("bug_report");
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files) {
-      setFiles(e.target.files);
-    }
-  };
+  if (e.target.files && e.target.files[0]) {
+    setFile(e.target.files[0]); // 한 파일만 선택
+  }
+};
+
+const handleFileRemove = () => {
+  setFile(null);
+    const input = document.getElementById('fileUpload') as HTMLInputElement;
+    if (input) input.value = ''; // input 값 초기화
+};
 
 const handleSubmit = async () => {
   if (!errorContent.trim()) {
@@ -22,12 +30,11 @@ const handleSubmit = async () => {
   // FormData 객체 생성 (multipart/form-data 형식)
   const formData = new FormData();
   formData.append("content", errorContent);
+  formData.append("category", selectedCategory);
 
-  if (files) {
-    Array.from(files).forEach((file) => {
-      formData.append("files", file);
-    });
-  }
+    if (file) {
+      formData.append("file", file); // 한 파일만 추가
+    }
 
   try {
     const res = await fetch("http://localhost:8080/api/report/create", {
@@ -44,7 +51,7 @@ const handleSubmit = async () => {
 
     // 입력값 초기화
     setErrorContent("");
-    setFiles(null);
+    setFile(null);
   } catch (err) {
     console.error(err);
     alert("오류 신고에 실패했습니다.");
@@ -64,13 +71,17 @@ const handleSubmit = async () => {
               <div className="category-title">공지사항</div>
               <ul className="tab-list">
                 <li className="tab-item">
-                  <button className="tab-button active">공지사항</button>
+                  <Link href="/notice">
+                    <button className="tab-button">공지사항</button>
+                  </Link>
                 </li>
                 <li className="tab-item">
                   <button className="tab-button">FAQ</button>
                 </li>
                 <li className="tab-item">
-                  <button className="tab-button">오류신고</button>
+                <Link href = "/error-report">
+                  <button className="tab-button active">오류신고</button>
+                </Link>
                 </li>
               </ul>
             </div>
@@ -78,11 +89,12 @@ const handleSubmit = async () => {
 
           <div className="contentInner">
             <div className="styles-container">
-              <h2 className="headline">오류신고</h2>
-              <p className="title-sm subTitle">
+              <div className="stitle">
+                <h2 className="headline">오류신고</h2>
+                <p className="title-sm subTitle">
                 사이트 이용 중 불편한 점이 있다면 알려주세요. 빠르게 확인할게요.
-              </p>
-
+                </p>
+              </div>
               {/* 오류 내용 입력 */}
               <div className="errorReport">
                 <div className="styles-container2">
@@ -112,10 +124,22 @@ const handleSubmit = async () => {
                   <input
                     id="fileUpload"
                     type="file"
-                    multiple
                     style={{ display: 'none' }}
                     onChange={handleFileChange}
                   />
+                    {/* 선택한 파일 표시 영역 */}
+                    {file && (
+                      <div className="file-item">
+                        {file.name}
+                        <button
+                          type="button"
+                          className="file-remove-btn"
+                          onClick={handleFileRemove}
+                        >
+                          X
+                        </button>
+                      </div>
+                    )}
                 </div>
               </div>
 
